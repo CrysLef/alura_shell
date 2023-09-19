@@ -4,7 +4,7 @@ converte-imagem(){
 
 cd ~/Downloads/imagens-livros
 
-if [! -d png] 
+if [ ! -d png ] 
 then
     mkdir png
 fi
@@ -12,14 +12,15 @@ fi
 for imagem in *.jpg
 do
     local img_sem_extensao=$(ls $imagem | awk -F. '{ print $1 }')
-    convert $imagem.jpg png/$imagem.png
+    convert $img_sem_extensao.jpg png/$img_sem_extensao.png
 done
 
 }
 
 converte-imagem 2>erros_conversao.txt
 
-if [ $? -eq 0 ] then
+if [ $? -eq 0 ] 
+then
     echo "Conversao realizada com sucesso"
 else
     echo "Ocorreu um erro na conversao"
