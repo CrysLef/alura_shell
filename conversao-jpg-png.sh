@@ -14,7 +14,7 @@ varrer_diretorio(){
 
     for arquivo in *
     do
-        local caminho_arquivo=$(find ~/Downloads/imagens-novos-livros -name $arquivo)
+        local caminho_arquivo=$(find $1 -name $arquivo)
 
         if [ -d $caminho_arquivo ]
         then
@@ -25,7 +25,7 @@ varrer_diretorio(){
     done
 }
 
-varrer_diretorio ~/Downloads/imagens-novos-livros
+varrer_diretorio $1
 
 if [ $? -eq 0 ] 
 then
