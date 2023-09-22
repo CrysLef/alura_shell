@@ -1,23 +1,31 @@
 #!/bin/bash
 
-converte-imagem(){
+converte_imagem(){
 
-cd ~/Downloads/imagens-livros
+    local caminho_img=$1
 
-if [ ! -d png ] 
-then
-    mkdir png
-fi
-
-for imagem in *.jpg
-do
-    local img_sem_extensao=$(ls $imagem | awk -F. '{ print $1 }')
-    convert $img_sem_extensao.jpg png/$img_sem_extensao.png
-done
+    local img_sem_extensao=$(ls $caminho_img | awk -F. '{ print $1 }')
+    convert $img_sem_extensao.jpg $img_sem_extensao.png
 
 }
 
-converte-imagem 2>erros_conversao.txt
+varrer_diretorio(){
+    cd $1
+
+    for arquivo in *
+    do
+        local caminho_arquivo=$(find ~/Downloads/imagens-novos-livros -name $arquivo)
+
+        if [ -d $caminho_arquivo ]
+        then
+            varrer_diretorio $caminho_arquivo
+        else
+            converte_imagem $caminho_arquivo
+        fi
+    done
+}
+
+varrer_diretorio ~/Downloads/imagens-novos-livros
 
 if [ $? -eq 0 ] 
 then
