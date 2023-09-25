@@ -11,7 +11,9 @@ converte_imagem(){
 
 varrer_diretorio(){
     cd $1
-
+    
+    local regex="\.jpg$"
+    
     for arquivo in *
     do
         local caminho_arquivo=$(find $1 -name $arquivo)
@@ -20,7 +22,10 @@ varrer_diretorio(){
         then
             varrer_diretorio $caminho_arquivo
         else
-            converte_imagem $caminho_arquivo
+            if [[ $caminho_arquivo =~ $regex ]]
+            then
+                converte_imagem $caminho_arquivo
+            fi
         fi
     done
 }
