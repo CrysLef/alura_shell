@@ -29,3 +29,24 @@ Para rodar este script basta apenas que execute o código abaixo no terminal:
 ```bash
 bash processos-memoria.sh
 ```
+
+## Filtrando resultado de busca de IP
+
+Primeiro crie a pasta apache-log e se mova para ela:
+
+```bash
+mkdir apache-log && cd apache-log
+```
+Em seguida, iremos usar este arquivo que será baixado através do link abaixo para fazer uma busca que retorne IPs válidos:
+
+```bash
+wget https://caelum-online-public.s3.amazonaws.com/shell-script/parte2/aula_1/apache.log
+```
+
+Então, basta que execute o código abaixo trocando o parâmetro "ip" por um IP para saber se ele consta ou não no arquivo de log:
+
+```bash
+bash filtrando-resultado.sh
+```
+
+É necessário que o código bash e a pasta apache-log estejam no mesmo diretório criada acima para que o código funcione.
