@@ -1,3 +1,5 @@
+#!/bin/bash
+
 cd apache-log
 
 regex="\b([0-9]{1,3}\.){3}[0-9]{1,3}\b"
