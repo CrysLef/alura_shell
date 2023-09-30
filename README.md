@@ -46,7 +46,16 @@ wget https://caelum-online-public.s3.amazonaws.com/shell-script/parte2/aula_1/ap
 Então, basta que execute o código abaixo trocando o parâmetro "ip" por um IP para saber se ele consta ou não no arquivo de log:
 
 ```bash
-bash filtrando-resultado.sh
+bash filtrando-resultado.sh "ip"
 ```
 
 É necessário que o código bash e a pasta apache-log estejam no mesmo diretório criada acima para que o código funcione.
+
+## Filtrando novas requisições no arquivo de log
+
+Para executar este código, iremos utilizar o mesmo arquivo de log baixado acima, basta substituir o parâmetro "req" por GET, PUT, POST ou DELETE:
+
+```bash
+bash filtrando-novas-requisicoes.sh "req"
+```
+O aviso para que o ódigo bash e a pasta apache-log estejam no mesmo diretório também é válido aqui.
