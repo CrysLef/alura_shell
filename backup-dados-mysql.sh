@@ -1,15 +1,13 @@
 #!/bin/bash
 
-$CAMINHO_HOME=/home/crys/
+$CAMINHO_BACKUP=$(pwd)/backup_mysql
 
-cd $CAMINHO_HOME
-
-if [ ! -d backup ]
+if [ ! -d backup_mysql ]
 then
   mkdir backup_mysql
 fi
 
-mysqldump -u root $1 > $CAMINHO_HOME/backup_mysql/$1.sql
+mysqldump -u root $1 > $CAMINHO_BACKUP/$1.sql
 
 if [ $? -eq 0 ]
 then
