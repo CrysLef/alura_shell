@@ -59,3 +59,50 @@ Para executar este código, iremos utilizar o mesmo arquivo de log baixado acima
 bash filtrando-novas-requisicoes.sh "req"
 ```
 O aviso para que o ódigo bash e a pasta apache-log estejam no mesmo diretório também é válido aqui.
+
+## Backup de dados do MySQL
+
+Primeiro, é necessário que baixe primeiro o MySQL server:
+
+```bash
+sudo apt-get install mysql-server -y
+```
+
+Feito isso, entre no MySQL com o comando:
+
+```bash
+sudo mysql -u root
+```
+
+Na sequência crie o banco chamado mutillidae:
+
+```bash
+create database mutillidae;
+```
+
+Devemos agora indicar que iremos utilizá-lo:
+
+```bash
+use mutillidae
+```
+
+Com isso, devemos criar as duas tabelas do nosso sistema produtos e usuarios:
+
+```bash
+create table produtos(livro VARCHAR(255), autor VARCHAR(255), preco_ebook VARCHAR(255), preco_livro VARCHAR(255));
+create table usuarios(nome VARCHAR(255), email VARCHAR(255), telefone VARCHAR(255), cidade VARCHAR(255));
+```
+
+Agora basta rodar o código para fazer o backup de dados da tabela de preferência:
+
+```bash
+bash backup-dados-mysql.sh
+```
+
+## Backup na nuvem dos dados do MySQL
+
+Para rodar este código, é necessário que baixe primeiro a [aws cli](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) e siga os passos para configurar seu ambiente da aws cli para poder ser capaz de rodar, além disso, também é preciso que instale o MySQL server caso ainda não tenha feito, o passo a passo está logo acima, agora basta digitar o código abaixo:
+
+```bash
+bash backup-amazon.sh
+```
